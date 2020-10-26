@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MyBatisCodeHelperDatasource">
+    <option name="projectProfile">
+      <ProjectProfile>
+        <option name="generatedClassPathList">
+          <list>
+            <option value="E:\zuomian\zy\javaqf\mybatis-01\src\main\java\com\enntity" />
+            <option value="E:\zuomian\zy\javaqf\mybatis-01\src\main\java\com\entity" />
+          </list>
+        </option>
+      </ProjectProfile>
+    </option>
+  </component>
+</project>

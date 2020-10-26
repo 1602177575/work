@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- mybatis的主配置文件 -->
+<configuration>
+
+    <properties resource="db.properties"/>
+
+    <settings>
+<!--        设置配置-->
+<!--        立即加载-->
+<!--        开启一级缓存-->
+        <setting name="cacheEnabled" value="true"/>
+        <setting name="aggressiveLazyLoading" value="false"/>
+<!--        开启驼峰命名映射-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+
+    <!-- 定义别名,alias="User"与mapper中的resultType="User"对应 -->
+    <typeAliases>
+        <typeAlias alias="User" type="com.entity.User"/>
+        <typeAlias alias="Integer" type="java.lang.Integer"/>
+        <typeAlias alias="String" type="java.lang.String"/>
+        <typeAlias alias="List" type="java.util.List"/>
+    </typeAliases>
+
+    <!-- 配置环境 -->
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.name}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件 -->
+    <mappers>
+    <mapper resource="mapper/UserMapper.xml" />
+
+    </mappers>
+</configuration>

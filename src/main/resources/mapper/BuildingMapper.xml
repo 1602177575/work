@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.IBuildingMapper">
+
+<resultMap id="BaseResultMapper" type="com.entity.Building">
+    <id column="id" property="id" />
+    <result column="name" property="name" />
+    <result column="num" property="num" />
+    <result column="area" property="area" />
+    <result column="buildingid" property="buildingID" />
+    <result column="employee" property="employee" />
+</resultMap>
+
+<insert id="inserBuilding">
+    insert into building
+    (name,num,area,buildingid,employee)
+    values (#{building.name},#{building.num},#{building.area},#{building.buildingID},#{building.employee})
+</insert>
+
+<update id="DeleteBuiding">
+    update building
+    set isdelete=0
+    where id=#{did}
+</update>
+
+<update id="UpDateBuilding">
+    update building set
+    name=#{UpBuilding.name},num=#{UpBuilding.num},area=#{UpBuilding.area},
+    buildingID=#{UpBuilding.buildingID},employee=#{UpBuilding.employee}
+</update>
+
+<select id="SelectAllBuilding" resultMap="BaseResultMapper">
+    select id,name,num,area,buildingid,employee
+    from building where isdelete=1
+</select>
+
+<select id="SelectByBId">
+    select id,name,num,area,buildingid,employee
+    from building where isdelete=1 and buildingid=#{sid}
+</select>
+
+<select id="SelectByName" >
+select id,name,num,area,buildingid,employee
+    from building where isdelete=1 and buildingid=#{name}
+</select>
+
+<select id="SelectByNum">
+select id,name,num,area,buildingid,employee
+    from building where isdelete=1 and buildingid=#{nid}
+</select>
+
+</mapper>
