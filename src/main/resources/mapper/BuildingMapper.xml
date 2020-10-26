@@ -36,19 +36,19 @@
     from building where isdelete=1
 </select>
 
-<select id="SelectByBId">
+<select id="SelectByBId" resultType="com.entity.Building">
     select id,name,num,area,buildingid,employee
     from building where isdelete=1 and buildingid=#{sid}
 </select>
 
-<select id="SelectByName" >
+<select id="SelectByName" resultType="com.entity.Building">
 select id,name,num,area,buildingid,employee
-    from building where isdelete=1 and buildingid=#{name}
+    from building where isdelete=1 and name=#{name}
 </select>
 
-<select id="SelectByNum">
+<select id="SelectByNum" resultType="com.entity.Building">
 select id,name,num,area,buildingid,employee
-    from building where isdelete=1 and buildingid=#{nid}
+    from building where isdelete=1 and num=#{nid}
 </select>
 
 </mapper>
