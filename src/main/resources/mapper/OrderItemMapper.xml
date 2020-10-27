@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderItemMapper">
+
+<resultMap id="BaseResultMap" type="com.entity.OrdetItem">
+    <id column="item_id" property="item_id" />
+       <result column="order_id" property="order_id" />
+    <result column="product_name" property="product_name"/>
+    <result column="product_img" property="product_img" />
+    <result column="product_price" property="product_price" />
+    <result column="product_quantity" property="product_quantity" />
+  <result column="order_no" property="order_no" />
+</resultMap>
+
+<select id="SelectTitemById" resultMap="BaseResultMap">
+    select * from where item_id=#{itemId}
+</select>
+
+
+
+   
+</mapper>

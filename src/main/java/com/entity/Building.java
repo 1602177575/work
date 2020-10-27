@@ -91,5 +91,18 @@ public class Building {
     public void setIsdelte(Integer isdelte) {
         this.isdelte = isdelte;
     }
+
+    @Override
+    public String toString() {
+        return "Building{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", num=" + num +
+                ", area=" + area +
+                ", buildingID='" + buildingID + '\'' +
+                ", employee='" + employee + '\'' +
+                ", isdelte=" + isdelte +
+                '}';
+    }
 }
 

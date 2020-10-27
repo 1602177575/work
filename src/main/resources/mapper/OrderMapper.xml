@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderMapper">
+
+<resultMap id="BaseResultMap" type="com.entity.TOrder">
+    <id column="orderId" property="orderId" />
+    <result  column="orderNo" property="orderNo" />
+    <result column="st" property="status" />
+    <result column="createDate" property="create_date" />
+    <result column="userId" property="userId" />
+</resultMap>
+
+<resultMap id="listResultMap" type="com.entity.TOrder" extends="BaseResultMap">
+<!--        声明一对一关系-->
+    <association property="user" resultMap="com.mapper.IUserMapper.BaseResultMap" />
+
+</resultMap>
+
+   
+<select id="SelectOrderByNo" resultMap="listResultMap">
+<!--    多表查询-->
+    select *
+    from  t_order o left join user u on o.userId=u.id
+    where  orderNo=#{orderNo}
+</select>
+
+    <resultMap id="conlectionResultMap" type="com.entity.TOrder" extends="BaseResultMap">
+        <association property="orderId" javaType="java.lang.Integer"/>
+    </resultMap>
+
+<select id="SelectOrderByUserId" resultMap="com.mapper.OrderItemMapper.BaseResultMap">
+    select item_id,order_id,product_name,product_img,product_price,product_quantity,order_no
+    from t_order o left join ordet_item oi on
+    o.orderid =oi.order_id
+    where o.userid=#{userId}
+</select>
+
+
+
+
+</mapper>

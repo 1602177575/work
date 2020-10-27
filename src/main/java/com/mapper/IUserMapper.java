@@ -36,4 +36,6 @@ public interface IUserMapper {
      */
     Integer UpDateUser(@Param("user")User user);
 
+
+
 }

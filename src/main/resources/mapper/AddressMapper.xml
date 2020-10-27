@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.AddressMapper">
+<resultMap id="BaseResultMap" type="com.entity.Address">
+    <id column="id" property="id" />
+    <result column="u_id" property="u_id" />
+    <result column="phone" property="phone" />
+    <result column="address" property="address" />
+</resultMap>
+
+<insert id="inserAddress">
+    insert into address (u_id,phone,address) values (#{add.u_id},#{add.phone},#{add.address})
+</insert>
+
+<update id="DelectAddress">
+    update address set is_del=1 where id=#{dad}
+</update>
+
+<update id="UpDateAddress">
+    update address
+    set phone=#{uad.phone},address=#{uad.address}
+</update>
+
+<select id="SelectAddress" resultMap="BaseResultMap">
+    select a.id,u_id,phone,address from address a left join user u on a.u_id=u.id
+    where a.u_id=#{s_uid};
+</select>
+
+
+</mapper>
